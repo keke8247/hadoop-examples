@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.wdk.hadoop</groupId>
+    <artifactId>hadoop-examples</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>zookeeper-example</module>
+        <module>hbase-example</module>
+        <module>spark-example</module>
+        <module>hive-example</module>
+        <module>strom-example</module>
+        <module>flume-example</module>
+        <module>kafka-example</module>
+        <module>hadoop-example-common</module>
+    </modules>
+
+
+    <properties>
+        <log4j.version>1.7.30</log4j.version>
+        <junit.version>4.12</junit.version>
+    </properties>
+
+    <dependencies>
+        <!--Log4j-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <!--junit-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>
