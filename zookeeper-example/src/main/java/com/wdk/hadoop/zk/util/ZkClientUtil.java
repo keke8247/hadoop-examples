@@ -1,23 +1,35 @@
 package com.wdk.hadoop.zk.util;
 
 import com.wdk.hadoop.common.util.PropertiesUtil;
+import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * @Description:
  *  zookeeper 客户端工具类
+ *  zkClient = new ZooKeeper(connections,sessionTimout,watcher,sessionId,sessionPasswd,canBeReadOnly);
+ *  构造Zk参数说明
+ *  connections : zk服务器列表, ip:port,ip:port,ip:port 组成,也可以加上 简历zk连接后访问的根目录 在最后一个 ip:port/path
+ *                  这样该客户端所有的操作都是基于这个目录下面的
+ *  sessionTimout: 会话超时时间,毫秒为单位.在会话周期内通过心跳机制保持活性,一旦在会话超时时间内没有有效的心跳检测,该会话失效
+ *  watcher: watch事件监听器.实现了org.apache.zookeeper.Watcher接口的类对象
+ *  sessionId/sessionPassword : 会话ID和秘钥,用于实现会话复活.这两个值可以通过第一次建立会话之后 getSessionId()和getSessionPasswd()获得.
+ *  canBeReadOnly : zk集群中一旦某个机器和过半以上的机器失去连接,那么该服务器将不提供服务.但是某些场景下我们希望提供只读服务.可以通过该参数控制.
  * @Author:wang_dk
  * @Date:2020/2/9 0009 12:53
  * @Version: v1.0
  **/
 
-public class ZkClientUtil {
+public class ZkClientUtil implements Watcher{
     private static final Logger logger = LoggerFactory.getLogger(ZkClientUtil.class);
+
+    private static CountDownLatch cd = new CountDownLatch(1);
 
     //zk连接超时默认时间
     private static final int SESSION_TIMEOUT = 10000;
@@ -40,8 +52,11 @@ public class ZkClientUtil {
      **/
     public static ZooKeeper getZkClient() {
         try {
-            zkClient = new ZooKeeper(connections,SESSION_TIMEOUT,null);
+            zkClient = new ZooKeeper(connections,SESSION_TIMEOUT,new ZkClientUtil());
+            cd.await(); //阻塞当前线程 直到收到连接成功事件通知.
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
         return zkClient;
@@ -144,6 +159,14 @@ public class ZkClientUtil {
             zk.close();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void process(WatchedEvent event) {
+        //new Zookeeper()直接返回的对象应用 并没有连接完成, zk连接创建完成会发送一个事件通知给到客户端.状态为syncConnected
+        if(Event.KeeperState.SyncConnected == event.getState()){
+            cd.countDown();
         }
     }
 }

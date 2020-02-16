@@ -27,6 +27,21 @@
             <artifactId>zookeeper</artifactId>
             <version>${zk.version}</version>
         </dependency>
+
+        <!--zkClient zk开源客户端,封装了一些底层细节-->
+        <dependency>
+            <groupId>com.github.sgroschupf</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.1</version>
+        </dependency>
+
+        <!--curator-framework 也是zk的开源客户端 Netflix开源的-->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>4.2.0</version>
+        </dependency>
+
     </dependencies>
 
 
