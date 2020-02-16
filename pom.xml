@@ -17,6 +17,8 @@
         <module>flume-example</module>
         <module>kafka-example</module>
         <module>hadoop-example-common</module>
+        <module>flink-example</module>
+        <module>algorithm-example</module>
     </modules>
 
 
