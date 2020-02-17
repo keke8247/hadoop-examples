@@ -80,6 +80,14 @@ public class ZkBasicExercises implements Watcher{
         TimeUnit.SECONDS.sleep(4000);
     }
 
+    @Test
+    public void testGetChiledrenWatcher() throws KeeperException, InterruptedException {
+        zk = ZkClientUtil.getZkClient();
+        zk.getChildren("/testNodeFromJava",this);
+
+        TimeUnit.SECONDS.sleep(10000);
+    }
+
     @Override
     public void process(WatchedEvent event) {
         //监控事件被触发 回调这个方法 可以在该方法里面加入业务逻辑
@@ -87,7 +95,7 @@ public class ZkBasicExercises implements Watcher{
 
         if(Event.EventType.NodeChildrenChanged == event.getType()){ //子节点列表数据发生变更
             try {
-                zk.getChildren("/",this).forEach(node -> {
+                zk.getChildren("/testNodeFromJava",this).forEach(node -> {
                     System.out.println("watcher process :"+ node);
                 });
             } catch (KeeperException e) {
