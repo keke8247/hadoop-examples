@@ -51,7 +51,7 @@ public class KafkaProperties {
                     // ...还有很多配置 可以参考ProducerConfig里面的进行按需配置.
 
                     //可以添加自定义的分区器
-                    producerProperties.put(ProducerConfig.PARTITIONER_CLASS_CONFIG,"com.wdk.hadoop.kafka.util.PartitionerUtil");
+//                    producerProperties.put(ProducerConfig.PARTITIONER_CLASS_CONFIG,"com.wdk.hadoop.kafka.util.PartitionerUtil");
                 }
             }
         }
