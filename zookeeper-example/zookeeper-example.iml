@@ -12,6 +12,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="hadoop-example-common" />
+    <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.3.0" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.8.0" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.44" level="project" />
     <orderEntry type="library" name="Maven: org.apache.zookeeper:zookeeper:3.4.5" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.6.1" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.15" level="project" />

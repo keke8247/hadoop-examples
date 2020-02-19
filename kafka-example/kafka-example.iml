@@ -12,6 +12,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="hadoop-example-common" />
+    <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.3.0" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.8.0" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.44" level="project" />
     <orderEntry type="library" name="Maven: org.apache.kafka:kafka-clients:0.10.2.1" level="project" />
     <orderEntry type="library" name="Maven: net.jpountz.lz4:lz4:1.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.xerial.snappy:snappy-java:1.1.2.6" level="project" />

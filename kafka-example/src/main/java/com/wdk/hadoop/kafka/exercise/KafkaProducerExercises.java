@@ -17,7 +17,7 @@ public class KafkaProducerExercises {
         Producer<String,Object> producer = KafkaProducerFactory.getProducer();
 
         for (int i=0;i<10;i++){
-            producer.send(new ProducerRecord<String, Object>("kafka_0219", "testValue__" + i), new Callback() {
+            producer.send(new ProducerRecord<String, Object>("kafka_0219", "~~~testValue__" + i), new Callback() {
                 @Override
                 public void onCompletion(RecordMetadata metadata, Exception exception) {
                     if (null != metadata){
