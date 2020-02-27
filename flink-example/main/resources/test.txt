@@ -1,0 +1,9 @@
+hello world
+hello scala
+hello java
+hello hadoop
+hello flink
+ni hao me
+how are you
+fine and you
+thank you
