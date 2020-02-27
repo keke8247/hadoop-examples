@@ -48,6 +48,12 @@ object SoucreTest {
         val source_kafka = env.addSource(new FlinkKafkaConsumer011[String]("topic_sensor",new SimpleStringSchema(),properties))
         source_kafka.print("source_kafka").setParallelism(1)
 
+        //5 自定义Source
+        val source_my = env.addSource(new MyFlinkSource)
+        source_my.print().setParallelism(1)
+
+
+
         env.execute()
     }
 
