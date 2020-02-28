@@ -1,0 +1,6 @@
+### Flink学习笔记
+    flink中几乎所有的聚合操作 sum,reduce 都是针对KeyedStream 最大限度的利用分布式的并行处理能力.
+    reduce((x,y)=>{
+        //x 为上一次聚合的结果
+        //y 为当前传入的数据
+    })
