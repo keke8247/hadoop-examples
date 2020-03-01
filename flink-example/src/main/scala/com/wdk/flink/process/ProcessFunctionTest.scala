@@ -40,7 +40,7 @@ object ProcessFunctionTest {
 }
 
 class MyKeyedProcessFunction() extends KeyedProcessFunction[String,SensorReading,String]{
-    //定义一个状态 保存上一条数据温度信息  这里必须使用lazy修饰  不然会报 The runtime context has not been initialized
+    //定义一个状态 保存上一条数据温度信息  这里必须使用lazy修饰 因为env还没有执行 环境还没有初始化完成 不然会报 The runtime context has not been initialized
     lazy val preTemp : ValueState[Double]= getRuntimeContext.getState(new ValueStateDescriptor[Double]("preTemp",classOf[Double]))
     //定义一个状态，用来保存定时器的时间戳
     lazy val preTime : ValueState[Long] = getRuntimeContext.getState(new ValueStateDescriptor[Long]("preTime",classOf[Long]));
