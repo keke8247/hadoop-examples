@@ -2,6 +2,7 @@ package com.wdk.flink.source
 
 import java.util.Properties
 
+import com.wdk.flink.domain.SensorReading
 import org.apache.flink.api.common.serialization.SimpleStringSchema
 import org.apache.flink.streaming.api.scala._
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer011
@@ -58,5 +59,3 @@ object SoucreTest {
     }
 
 }
-
-case class SensorReading( id: String, timestamp: Long, temperature: Double );
