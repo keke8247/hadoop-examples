@@ -14,7 +14,7 @@ object WordCount {
         //创建flink 批处理执行环境
         val env = ExecutionEnvironment.getExecutionEnvironment
 
-        val inputFile = "F:\\myGitHub\\hadoop\\hadoop-examples\\flink-example\\main\\resources\\test.txt"
+        val inputFile = "D:\\files\\program\\idea\\hadoop-examples\\flink-example\\src\\main\\resources\\test.txt"
 
         val inputDataSet = env.readTextFile(inputFile)
 

@@ -16,7 +16,7 @@ object TransformerTest {
         val env = StreamExecutionEnvironment.getExecutionEnvironment
         env.setParallelism(1)   //设置全局并行度为1
 
-        val inputStream = env.readTextFile("F:\\myGitHub\\hadoop\\hadoop-examples\\flink-example\\main\\resources\\sensor.txt")
+        val inputStream = env.readTextFile("F:\\myGitHub\\hadoop\\hadoop-examples\\flink-example\\src\\main\\resources\\sensor.txt")
 
 //        1:转换算子
         //map 对数据流里面的每个元素做处理 返回一个新的DataStream
