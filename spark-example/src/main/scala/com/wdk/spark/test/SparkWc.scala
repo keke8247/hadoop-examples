@@ -19,7 +19,7 @@ object SparkWc {
         //第二个参数 可以设置并行度 指定最小分区数
         val inputData = sparkContext.textFile("spark-example/in",6)
 
-        inputData.saveAsTextFile("spark-example/output")
+//        inputData.saveAsTextFile("spark-example/output")
 
         val wordCount = inputData.flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_)
 
