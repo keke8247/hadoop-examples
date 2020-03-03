@@ -25,7 +25,53 @@
     <properties>
         <log4j.version>1.7.30</log4j.version>
         <junit.version>4.12</junit.version>
+        <slf4j.version>1.7.22</slf4j.version>
+        <mongodb-spark.version>2.0.0</mongodb-spark.version>
+        <casbah.version>3.1.1</casbah.version>
+        <redis.version>2.9.0</redis.version>
+        <kafka.version>0.10.2.1</kafka.version>
+        <spark.version>2.1.1</spark.version>
+        <scala.version>2.11.8</scala.version>
+        <jblas.version>1.2.1</jblas.version>
     </properties>
+
+    <!--dependencyManagement 声明但不引用,子模块如需依赖自行引入,这里只是做版本控制.-->
+    <dependencyManagement>
+        <dependencies>
+            <!-- 引入Spark相关的Jar包 -->
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-core_2.11</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-sql_2.11</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-streaming_2.11</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-mllib_2.11</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-graphx_2.11</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-library</artifactId>
+                <version>${scala.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 
     <dependencies>
         <!--Log4j-->
