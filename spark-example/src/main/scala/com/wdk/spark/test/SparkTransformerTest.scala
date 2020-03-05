@@ -41,7 +41,11 @@ object SparkTransformerTest {
         }.foreach(println)
 
 
+        // sample 算子可以进行 数据采样. 参数1 false 表示采样数据不放回 true表示放回
+        println(transRdd.sample(true, 0.6, 1).collect().mkString(","))
 
+        val  rdd = sc.makeRDD(List(("a",1)))
+        rdd.groupByKey()
 
 
 
