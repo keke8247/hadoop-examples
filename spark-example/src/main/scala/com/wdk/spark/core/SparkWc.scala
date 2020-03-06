@@ -1,4 +1,4 @@
-package com.wdk.spark.test
+package com.wdk.spark.core
 
 import org.apache.spark.{SparkConf, SparkContext}
 
