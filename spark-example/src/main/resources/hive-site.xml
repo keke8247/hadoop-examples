@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+	<property>
+		<name>hive.metastore.uris</name>
+		<value>thrift://master:9083</value>
+	</property>
+        <property>
+                <name>javax.jdo.option.ConnectionURL</name>
+                <value>jdbc:mysql://master:3306/hive?createDatabaseIfNotExist=true&amp;useSSL=false</value>
+        </property>
+        <property>
+                <name>javax.jdo.option.ConnectionDriverName</name>
+                <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property>
+                <name>javax.jdo.option.ConnectionUserName</name>
+                <value>root</value>
+        </property>
+        <property>
+                <name>javax.jdo.option.ConnectionPassword</name>
+                <value>111111</value>
+        </property>
+	<property>
+	   	 <name>hive.insert.into.multilevel.dirs</name>  
+   		 <value>true</value>
+	</property>  
+	<property>
+		<name>hive.metastore.warehouse.dir</name>
+		<value>/usr/hive/warehouse</value>
+	</property>
+	<!-- hive.cli.print.header=true 表示查询的时候，会把列名展示出来。 -->
+	<property>
+		<name>hive.cli.print.header</name>
+		<value>true</value>
+	</property>
+	<!-- 以 hive service metastore & 后台进程运行 这里以下 flume  sink到hive时 下面需要配置上，缺少可能跑不起来 -->
+ 	<property>       
+    		<name>hive.txn.manager</name>        
+    		<value>org.apache.hadoop.hive.ql.lockmgr.DbTxnManager</value>  
+  	</property>  
+  	<property>       
+    		<name>hive.compactor.initiator.on</name>        
+    		<value>true</value>
+  	</property>  
+  	<property>       
+    		<name>hive.compactor.worker.threads</name>        
+    		<value>1</value>
+  	</property>  
+    
+  	<property>       
+    		<name>hive.support.concurrency</name>        
+    		<value>true</value>
+		<!-- 这里false 时会导致 单独启动的hive 不能使用 相关SQL命令，会报错 -->
+  	</property>  
+  	<property>       
+    		<name>hive.enforce.bucketing</name>        
+    		<value>true</value>
+  	</property>  
+	<!-- 这里网上说是无关紧要的，但是少了就是起不来，hive启动后默认会跑一些东西，而且要是false，是true的话会报
+                         Can't call rollback when autocommit=true
+	-->
+  	<property>
+	    	<name>hive.in.test</name>  
+    		<value>false</value>
+  	</property>	
+</configuration>
+ 
