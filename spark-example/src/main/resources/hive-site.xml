@@ -29,11 +29,7 @@
 		<name>hive.metastore.warehouse.dir</name>
 		<value>/usr/hive/warehouse</value>
 	</property>
-	<!-- hive.cli.print.header=true 表示查询的时候，会把列名展示出来。 -->
-	<property>
-		<name>hive.cli.print.header</name>
-		<value>true</value>
-	</property>
+
 	<!-- 以 hive service metastore & 后台进程运行 这里以下 flume  sink到hive时 下面需要配置上，缺少可能跑不起来 -->
  	<property>       
     		<name>hive.txn.manager</name>        
