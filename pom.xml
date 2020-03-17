@@ -19,6 +19,7 @@
         <module>hadoop-example-common</module>
         <module>flink-example</module>
         <module>algorithm-example</module>
+        <module>redis-example</module>
     </modules>
 
 
