@@ -17,7 +17,12 @@ public class RedisStringAPI {
         JedisPool jedisPool = JedisPoolFactory.getJedisPool();
         Jedis jedis = jedisPool.getResource();
 
-        System.out.println(jedis.ping());
+        try {
+            System.out.println(jedis.ping());
+        }catch (Exception e){
 
+        }finally {
+            JedisPoolFactory.freedResource(jedis);
+        }
     }
 }
