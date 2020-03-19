@@ -16,5 +16,11 @@
     配置 要监控的 master
     master 节点挂了 会从 slaver中选举一个新的master 接受写请求. 集群正常服务.
     原master 重新启动后 会自动变为slaver 加入集群.提供读服务.
+    选主流程:   
+        先比较slave-priority(权重值) 靠前的成为下一个Leader
+        如果优先级一直 比较 replication offset ,offset 最大的成为下一个Leader
+        如果offset一直 比较RunId runid 最小的为下一个Leader
+    某一个Slaver被选为Leader后, 哨兵会对其发送 slaveof no one 命令 令其成为Master,对集群中其他Slaver发送 slaveof leaderIP leaderPort
+    当原先Leader恢复功能 重新加入服务后,哨兵对其发送slaveof leaderIp leaderPort,并和新leader同步数据,同步完成后加入集群提供服务.
  
     
