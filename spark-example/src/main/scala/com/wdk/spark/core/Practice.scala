@@ -24,7 +24,8 @@ object Practice {
         //需求：统计出每一个省份广告被点击次数的TOP3
         val top3 = dataRdd.map(info=>((info.province,info.advertisement),1)).reduceByKey(_+_).map{
             case(pa,num)=>(pa._1,(pa._2,num))
-        }.groupByKey().mapValues(x=>x.toList.sortWith((x,y)=>x._2>y._2).take(3))
+        }.groupByKey()
+            .mapValues(x=>x.toList.sortWith((x,y)=>x._2>y._2).take(3))
         top3.foreach(println)
     }
 }

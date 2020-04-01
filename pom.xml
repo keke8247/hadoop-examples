@@ -20,6 +20,7 @@
         <module>flink-example</module>
         <module>algorithm-example</module>
         <module>redis-example</module>
+        <module>mr-example</module>
     </modules>
 
 

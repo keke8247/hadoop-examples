@@ -1,7 +1,7 @@
 package com.wdk.spark.sql
 
 import org.apache.spark.SparkConf
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{SaveMode, SparkSession}
 
 /**
   * @Description
@@ -31,6 +31,14 @@ object SparkSql_transform {
 
         //rdd ==> df rdd转Df 其实就是给Rdd加上结构
         val df = rdd.toDF("id","name","age")
+
+        //df写入到csv文件 带表头
+        val saveoptions = Map(
+            "header"->"true",
+            "delimiter"->"\t",
+            "path"->"spark-example/out/df.csv")
+        df.write.format("csv").options(saveoptions).mode(SaveMode.Overwrite).save()
+
 
         //df ==> ds df转ds 在结构的基础上加上类型
         val ds = df.as[User]
