@@ -53,8 +53,6 @@ object SoucreTest {
         val source_my = env.addSource(new MyFlinkSource)
         source_my.print().setParallelism(1)
 
-
-
         env.execute()
     }
 
