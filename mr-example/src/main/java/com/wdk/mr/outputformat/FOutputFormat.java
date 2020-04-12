@@ -3,6 +3,7 @@ package com.wdk.mr.outputformat;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IOUtils;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.RecordWriter;
@@ -46,8 +47,10 @@ public class FOutputFormat extends RecordWriter<Text, NullWritable> {
 
     }
 
+    // 切记一定要关闭 资源
     @Override
     public void close(TaskAttemptContext context) throws IOException, InterruptedException {
-
+        IOUtils.closeStream(atguiguOut);
+        IOUtils.closeStream(otherOut);
     }
 }
