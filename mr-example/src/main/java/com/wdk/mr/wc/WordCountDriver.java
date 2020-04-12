@@ -18,6 +18,10 @@ import java.io.IOException;
  */
 public class WordCountDriver {
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+        if (args.length == 0){
+            args=new String[]{"D:\\input\\wc","D:\\output\\wc"};
+        }
+
         Configuration conf = new Configuration();
         //1 定义job
         Job job = Job.getInstance(conf);
