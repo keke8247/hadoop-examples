@@ -19,7 +19,7 @@ import java.io.IOException;
 public class WordCountDriver {
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
         if (args.length == 0){
-            args=new String[]{"E:\\input\\combiner","E:\\output\\combiner_out"};
+            args=new String[]{"D:\\input\\combiner","D:\\output\\combiner_out"};
         }
 
         Configuration conf = new Configuration();

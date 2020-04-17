@@ -60,7 +60,7 @@ class MyKeyedProcessFunction() extends KeyedProcessFunction[String,SensorReading
             //获取当前时间
             val timerTs = ctx.timerService().currentProcessingTime() +10000L
 
-            ctx.timerService().registerProcessingTimeTimer(timerTs) //注册一个10秒的定时器
+            ctx.timerService().registerEventTimeTimer(timerTs) //注册一个10秒的定时器
 
             preTime.update(timerTs)
         }else if(currentTemp < temp || time == 0){ //如果温度下降 或者是第一条数据  清除定时器状态

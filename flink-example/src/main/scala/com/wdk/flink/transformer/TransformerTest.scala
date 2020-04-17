@@ -24,6 +24,7 @@ object TransformerTest {
             val item = line.split(",")
             SensorReading(item(0).trim,item(1).trim.toLong,item(2).trim.toDouble)
         })
+
 //        mapDs.print("map")
 
         //flatMap 会把输入list里面的元素 打平到一个结果List里面 返回一个新的DataStream
