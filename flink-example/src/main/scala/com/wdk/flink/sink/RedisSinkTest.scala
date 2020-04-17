@@ -58,6 +58,7 @@ object RedisSinkTest {
 case class MyRedisMapper() extends RedisMapper[SensorReading]{
 
     //定义写入到Redis 执行的命令
+    //保存成哈希表  Hset key field value
     override def getCommandDescription = {
         new RedisCommandDescription(RedisCommand.HSET,"sensor_temperature")
     }
