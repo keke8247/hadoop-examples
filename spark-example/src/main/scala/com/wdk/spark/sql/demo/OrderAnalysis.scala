@@ -46,7 +46,10 @@ object OrderAnalysis {
         tbDateDS.createOrReplaceTempView("tbDate")
         tbStockDetailDS.createOrReplaceTempView("tbStockDetail")
 
-        spark.sql("select a.ordernumber,sum(b.amount) from tbStock a join tbStockDetail b on a.ordernumber = b.ordernumber group by a.ordernumber").show
+        spark.sql("select a.ordernumber,sum(b.amount) " +
+            "from " +
+            "tbStock a join tbStockDetail b on a.ordernumber = b.ordernumber " +
+            "group by a.ordernumber").show
 
 
     }

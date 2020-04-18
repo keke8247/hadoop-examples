@@ -11,5 +11,14 @@
 
     <artifactId>flume-example</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.flume</groupId>
+            <artifactId>flume-ng-core</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+    </dependencies>
+
+
 
 </project>
