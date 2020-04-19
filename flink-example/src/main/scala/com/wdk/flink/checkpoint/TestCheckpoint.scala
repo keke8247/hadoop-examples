@@ -24,10 +24,10 @@ object TestCheckpoint {
         //定义flink执行环境
         val env = StreamExecutionEnvironment.getExecutionEnvironment
 
-//        env.setStateBackend(new FsStateBackend("file:///D:\\files\\program\\idea\\hadoop-examples\\flink-example\\ck")) //设置状态后端. 状态的存储级别  memory/file/rocksDb
+        env.setStateBackend(new FsStateBackend("file:///D:\\files\\program\\idea\\hadoop-examples\\flink-example\\ck")) //设置状态后端. 状态的存储级别  memory/file/rocksDb
 
 //        设置checkpoint的 间隔 和 级别.
-//        env.enableCheckpointing(6000,CheckpointingMode.EXACTLY_ONCE)
+        env.enableCheckpointing(6000,CheckpointingMode.EXACTLY_ONCE)
 
         //定义kafkaSource
         val properties = new Properties();

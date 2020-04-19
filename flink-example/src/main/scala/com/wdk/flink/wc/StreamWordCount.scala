@@ -1,6 +1,7 @@
 package com.wdk.flink.wc
 
 import org.apache.flink.streaming.api.scala._
+import org.apache.flink.streaming.api.windowing.time.Time
 
 /**
   * @Description
@@ -27,6 +28,7 @@ object StreamWordCount {
             .startNewChain()    //断开前面的operator chains  重开一个chains
             .map((_,1))
             .keyBy(0)   //把元组中第一个元素作为key
+            .timeWindow(Time.seconds(5))
             .sum(1)     //根据元组中第二个元素求和
 
         wordCountDataStream
