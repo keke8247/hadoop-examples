@@ -27,6 +27,8 @@ object SparkSql_UDAF_Class {
         //准备数据
         val userDf = spark.read.json("spark-example/in/user.json")
 
+        userDf.show()
+
         //创建聚合函数对象
         val udaf = new MyAgeAvgClassFunction
 

@@ -22,13 +22,12 @@ object CombineByKeyTest {
         //aggregateByKey 参数描述
         /*
         *   createCombiner : (_,1) 为key创建初始值 key第一次进入 用 value 创建 二元组 统计key出现次数
-        *   mergeValue: (imem:(Int,Int),v)=>(imem._1+v,imem._2+1)  分区内函数 如果key值已经出现过 把value值相加  次数+1
+        *   mergeValue: (imem:(Int,Int),v)=>(imem._1+v,imem._2+1)  分区内函数 如果key值已经出现过 把value值相加  次数+1(对Value进行分区内聚合)
         *   mergeCombiners: (imem1:(Int,Int),imem2:(Int,Int)) =>(imem1._1+imem2._1,imem1._2+imem2._2) 分区间函数 分区间相同key 的value 求和,次数求和.
         */
         val combineRdd = pairRdd.combineByKey((_,1),
             (imem:(Int,Int),v)=>(imem._1+v,imem._2+1),
             (imem1:(Int,Int),imem2:(Int,Int)) =>(imem1._1+imem2._1,imem1._2+imem2._2))
-
 
         pairRdd.cogroup(pairRdd)
         println(combineRdd.map(item =>{

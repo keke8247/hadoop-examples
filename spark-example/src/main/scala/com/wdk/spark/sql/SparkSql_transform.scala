@@ -32,6 +32,10 @@ object SparkSql_transform {
         //rdd ==> df rdd转Df 其实就是给Rdd加上结构
         val df = rdd.toDF("id","name","age")
 
+        df.map(item=>{
+            println(item.get(2))
+        })
+
         //df写入到csv文件 带表头
         val saveoptions = Map(
             "header"->"true",
