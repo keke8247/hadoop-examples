@@ -24,6 +24,5 @@ object SparkWc {
         val wordCount = inputData.flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_)
 
         wordCount.foreach(println)
-
     }
 }

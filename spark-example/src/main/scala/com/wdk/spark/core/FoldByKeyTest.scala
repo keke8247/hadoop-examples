@@ -1,6 +1,6 @@
 package com.wdk.spark.core
 
-import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.{HashPartitioner, SparkConf, SparkContext}
 
 /**
   * @Description:

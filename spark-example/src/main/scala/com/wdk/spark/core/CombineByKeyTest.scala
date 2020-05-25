@@ -29,10 +29,12 @@ object CombineByKeyTest {
             (imem:(Int,Int),v)=>(imem._1+v,imem._2+1),
             (imem1:(Int,Int),imem2:(Int,Int)) =>(imem1._1+imem2._1,imem1._2+imem2._2))
 
-        pairRdd.cogroup(pairRdd)
-        println(combineRdd.map(item =>{
-            val avg = item._2._1/item._2._2
-            (item._1,avg)
-        }).collect().mkString(","))
+        pairRdd.cogroup(pairRdd).foreach(item=>{
+            println(item._2._2)
+        })
+//        println(combineRdd.map(item =>{
+//            val avg = item._2._1/item._2._2
+//            (item._1,avg)
+//        }).collect().mkString(","))
     }
 }
