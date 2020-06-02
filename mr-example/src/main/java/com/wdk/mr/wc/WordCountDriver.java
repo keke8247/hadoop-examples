@@ -5,6 +5,8 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.CombineFileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.CombineTextInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
@@ -43,6 +45,11 @@ public class WordCountDriver {
         // 6 设置输入和输出路径
         FileInputFormat.setInputPaths(job,new Path(args[0]));
         FileOutputFormat.setOutputPath(job,new Path(args[1]));
+
+        //使用CombineTextInputFormat 处理小文件,把小文件放到一个split切片.
+        job.setInputFormatClass(CombineTextInputFormat.class);
+        //设置 切片大小为4M 会把小文件合并到一个split里面
+        CombineTextInputFormat.setMaxInputSplitSize(job,4194304);
 
         // 7 提交
 //        job.submit();
