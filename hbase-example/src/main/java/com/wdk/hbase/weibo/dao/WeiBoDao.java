@@ -42,7 +42,7 @@ public class WeiBoDao {
         //微博的rowKey
         /*
         * rowKey设计思路. 直接: uid_时间戳 这样最先发布的微博 在scan的时候 最先被查出来.
-        *   显示业务中 往往最后发布的微博 被查的概率较高. 所以把 时间戳反转一下  9999999999999-时间戳
+        *   现实业务中 往往最后发布的微博 被查的概率较高. 所以把 时间戳反转一下  9999999999999-时间戳
         *   最先发布的时间戳最大,这样最先发布的最后被查询出来 取最近topN 就比较方便了
         * */
         String rowKey = uid+"_"+(WeiBoConstant.MAX_TS-System.currentTimeMillis());

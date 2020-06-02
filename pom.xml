@@ -21,6 +21,7 @@
         <module>algorithm-example</module>
         <module>redis-example</module>
         <module>mr-example</module>
+        <module>scala-example</module>
     </modules>
 
 
