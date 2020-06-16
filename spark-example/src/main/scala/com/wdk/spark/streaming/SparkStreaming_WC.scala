@@ -21,6 +21,7 @@ object SparkStreaming_WC {
 
         // 从socket 收集数据
         val streamingDStream: ReceiverInputDStream[String] = streamingContext.socketTextStream("master",9999)
+        // streamingContext.receiverStream("添加自定义的Receiver")
 
         val wordcountsDStream = streamingDStream.flatMap(line=>line.split(" ")).map((_,1)).reduceByKey(_+_)
 
