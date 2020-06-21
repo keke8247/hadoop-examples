@@ -24,7 +24,6 @@
             <version>${hive.version}</version>
         </dependency>
 
-<<<<<<< HEAD
         <!--分析Hive源码-->
         <dependency>
             <groupId>org.apache.hive</groupId>
@@ -37,7 +36,6 @@
             <version>${hive.version}</version>
         </dependency>
 
-=======
         <!--添加hadoop依赖 使用Mapper Runner-->
         <dependency>
             <groupId>org.apache.hadoop</groupId>
@@ -49,7 +47,6 @@
             <artifactId>hadoop-client</artifactId>
             <version>2.7.2</version>
         </dependency>
->>>>>>> 4b227cbf77afd42aa8aa8a2ded10bc8bb1b52531
     </dependencies>
 
 </project>
