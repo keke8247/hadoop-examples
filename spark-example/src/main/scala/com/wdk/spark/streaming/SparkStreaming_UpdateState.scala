@@ -22,7 +22,7 @@ object SparkStreaming_UpdateState {
 
 
         // 从socket 收集数据
-        val streamingDStream: ReceiverInputDStream[String] = streamingContext.socketTextStream("master",9999)
+        val streamingDStream: ReceiverInputDStream[String] = streamingContext.socketTextStream("slave1",9999)
 
 //        val wordcountsDStream = streamingDStream.flatMap(line=>line.split(" ")).map((_,1)).reduceByKey(_+_)
 

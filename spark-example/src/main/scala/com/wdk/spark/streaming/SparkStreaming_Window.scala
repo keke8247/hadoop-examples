@@ -19,7 +19,7 @@ object SparkStreaming_Window {
         val streamingContext = new StreamingContext(sparkConf,Seconds(3))
 
         // 从socket 收集数据
-        val streamingDStream: ReceiverInputDStream[String] = streamingContext.socketTextStream("master",9999)
+        val streamingDStream: ReceiverInputDStream[String] = streamingContext.socketTextStream("slave1",9999)
 
         //在DStream上 开窗口, 窗口大小必须是采集周期的整数倍, 滑动步长也是采集周期的整数倍,不然会报错.
         val windowDStream = streamingDStream.window(Seconds(9),Seconds(3))
